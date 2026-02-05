@@ -1,0 +1,20 @@
+{
+  "name": "com.emreemiroglu.designpatterns",
+  "version": "1.0.0",
+  "displayName": "DesignPatterns",
+  "description": "Production-ready Design Patterns for Unity and C#, with clean implementations and concise documentation.",
+  "author": {
+    "name": "Emre Emiroglu",
+    "email": "emirogluemre08@gmail.com",
+    "url": "https://github.com/Emre-Emiroglu"
+  },
+  "keywords": [
+    "skill",
+    "system",
+    "unity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Emre-Emiroglu/DesignPatterns.git"
+  }
+}
