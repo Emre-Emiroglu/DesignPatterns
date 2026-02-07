@@ -1,6 +1,6 @@
 namespace DesignPatterns.Runtime.Structural.Bridge
 {
-    public abstract class Bridge<T>
+    public abstract class Bridge<T> where T : IBridgeImplementation
     {
         #region ReadonlyFields
         protected readonly T Implementation;
