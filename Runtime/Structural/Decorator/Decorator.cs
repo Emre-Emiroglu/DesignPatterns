@@ -1,12 +1,19 @@
 namespace DesignPatterns.Runtime.Structural.Decorator
 {
+    /// <summary>
+    /// Provides a base implementation for decorators.
+    /// </summary>
+    /// <typeparam name="T">The wrapped type.</typeparam>
     public abstract class Decorator<T> : IDecorator<T>
     {
         #region Fields
         protected readonly T Inner;
         #endregion
 
-        #region Properties
+        #region Getters
+        /// <summary>
+        /// Gets the wrapped value.
+        /// </summary>
         public T Value => Inner;
         #endregion
 

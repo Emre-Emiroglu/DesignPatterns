@@ -2,6 +2,9 @@ using System.Collections.Generic;
 
 namespace DesignPatterns.Runtime.Behavioral.Command
 {
+    /// <summary>
+    /// Executes commands and manages undoable command history.
+    /// </summary>
     public sealed class CommandInvoker
     {
         #region ReadonlyFields
@@ -9,6 +12,10 @@ namespace DesignPatterns.Runtime.Behavioral.Command
         #endregion
 
         #region Execute
+        /// <summary>
+        /// Executes the given command and stores it if it supports undo.
+        /// </summary>
+        /// <param name="command">The command to execute.</param>
         public void Execute(ICommand command)
         {
             command.Execute();
@@ -16,6 +23,10 @@ namespace DesignPatterns.Runtime.Behavioral.Command
             if (command is IUndoableCommand undoableCommand)
                 _history.Push(undoableCommand);
         }
+        
+        /// <summary>
+        /// Undoes the last executed undoable command.
+        /// </summary>
         public void Undo()
         {
             if (_history.Count == 0)

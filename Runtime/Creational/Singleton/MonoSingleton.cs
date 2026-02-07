@@ -2,6 +2,10 @@ using UnityEngine;
 
 namespace DesignPatterns.Runtime.Creational.Singleton
 {
+    /// <summary>
+    /// Provides a MonoBehaviour-based singleton implementation.
+    /// </summary>
+    /// <typeparam name="T">The type of the MonoSingleton.</typeparam>
     public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
     {
         #region Fields
@@ -9,6 +13,9 @@ namespace DesignPatterns.Runtime.Creational.Singleton
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Gets the singleton instance from the scene.
+        /// </summary>
         public static T Instance
         {
             get
