@@ -11,10 +11,10 @@ A design pattern:
 
 ## Package Structure
 Patterns are organized according to classical literature under the following categories:
-- **Architectural Patterns**
-- **Behavioral Patterns**
-- **Creational Patterns**
-- **Structural Patterns**
+- Architectural Patterns
+- Behavioral Patterns
+- Creational Patterns
+- Structural Patterns
 
 Each pattern is designed to be:
 - Minimal
@@ -675,8 +675,8 @@ Use patterns consciously, refactor fearlessly, and keep systems simple.
 
 ## Tests
 The package includes:
-- **EditMode tests** to validate pattern intent
-- **PlayMode tests** written only for `MonoSingleton` and `PersistentMonoSingleton`
+- EditMode tests to validate pattern intent
+- PlayMode tests written only for `MonoSingleton` and `PersistentMonoSingleton`
 
 ## Acknowledgments
 Special thanks to [Refactoring Guru](https://refactoring.guru/design-patterns) and the Unity community for their invaluable resources and tools.
