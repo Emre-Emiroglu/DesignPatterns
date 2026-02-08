@@ -87,7 +87,7 @@ Included patterns:
 
 ## Usage
 ### Architectural Patterns
-#### Service Locator
+- **Service Locator:**
 ```csharp
 public interface IAudioService
 {
@@ -110,11 +110,10 @@ var audioService = ServiceLocator.Resolve<IAudioService>();
 audioService.PlaySound("click");
 ```
 
-#### MVC / MVCS
-Ready-to-use runtime implementations for MVC and MVCS are provided in the [ModelViewMediatorController](https://github.com/Emre-Emiroglu/ModelViewMediatorController) package.
+- **MVC / MVCS:** Ready-to-use runtime implementations for MVC and MVCS are provided in the [ModelViewMediatorController](https://github.com/Emre-Emiroglu/ModelViewMediatorController) package.
 
 ### Behavioral Patterns
-#### Chain Of Responsibility
+- **Chain Of Responsibility:**
 ```csharp
 public sealed class HealthCheckHandler : Handler<Player>
 {
@@ -145,7 +144,7 @@ healthHandler.SetNext(ammoHandler);
 healthHandler.Handle(player);
 ```
 
-#### Command
+- **Command:**
 ```csharp
 public sealed class MoveCommand : IUndoableCommand
 {
@@ -167,7 +166,7 @@ invoker.Execute(new MoveCommand(player, Vector3.forward));
 invoker.Undo();
 ```
 
-#### Iterator
+- **Iterator:**
 ```csharp
 public sealed class Inventory
 {
@@ -189,7 +188,7 @@ while (iterator.HasNext())
 }
 ```
 
-#### Mediator
+- **Mediator:**
 ```csharp
 public sealed class GameMediator : IMediator
 {
@@ -211,7 +210,7 @@ public sealed class PlayButton : Mediated
 }
 ```
 
-#### Memento
+- **Memento:**
 ```csharp
 public sealed class PlayerState
 {
@@ -228,8 +227,7 @@ history.Save(new PlayerState { Health = 50 });
 PlayerState previous = history.Undo(); // Health = 100
 ```
 
-#### Observer
-For event-based and decoupled communication, the [SignalBus](https://github.com/Emre-Emiroglu/SignalBus) package is recommended.
+- **Observer:** For event-based and decoupled communication, the [SignalBus](https://github.com/Emre-Emiroglu/SignalBus) package is recommended.
 ```csharp
 public sealed class Health : Subject<int>
 {
@@ -251,7 +249,7 @@ public sealed class HealthUI : IObserver<int>
 }
 ```
 
-#### State
+- **State:**
 ```csharp
 public sealed class IdleState : IState<Player>
 {
@@ -271,7 +269,7 @@ public sealed class AttackState : IState<Player>
 stateMachine.ChangeState(new AttackState(), player);
 ```
 
-#### Strategy
+- **Strategy:**
 ```csharp
 public sealed class AggressiveStrategy : IStrategy<Player, void>
 {
@@ -290,7 +288,7 @@ public sealed class DefensiveStrategy : IStrategy<Player, void>
 }
 ```
 
-#### Template Method
+- **Template Method:**
 ```csharp
 public abstract class GameLoop : Template<object>
 {
@@ -307,7 +305,7 @@ public abstract class GameLoop : Template<object>
 }
 ```
 
-#### Visitor
+- **Visitor:**
 ```csharp
 public interface IEnemy : IVisitable<IEnemy>
 {
@@ -331,7 +329,7 @@ public sealed class DamageVisitor : IVisitor<IEnemy>
 ```
 
 ### Creational Patterns
-#### Abstract Factory
+- **Abstract Factory:**
 ```csharp
 public interface IUIFactory
 {
@@ -367,7 +365,7 @@ IButton button = factory.CreateButton();
 IPanel panel = factory.CreatePanel();
 ```
 
-#### Builder
+- **Builder:**
 ```csharp
 public sealed class Character
 {
@@ -400,7 +398,7 @@ public sealed class WarriorBuilder : Builder<Character>
 Character _warrior = new WarriorBuilder().WithHealth(50).WithDamage(10).Build();
 ```
 
-#### Factory Method
+- **Factory Method:**
 ```csharp
 public sealed class Enemy { }
 
@@ -417,7 +415,7 @@ var factory = new EnemyFactory();
 Enemy enemy = factory.Create();
 ```
 
-#### Prototype
+- **Prototype:**
 ```csharp
 public sealed class Bullet : Prototype<Bullet>
 {
@@ -429,7 +427,7 @@ var original = new Bullet { Damage = 10 };
 var clone = original.Clone();
 ```
 
-#### Singleton
+- **Singleton:**
 ```csharp
 public sealed class GameSettings : Singleton<GameSettings>
 {
@@ -453,7 +451,7 @@ AudioManager.PlayMusic();
 ```
 
 ### Structural Patterns
-#### Adapter
+- **Adapter:**
 ```csharp
 public sealed class LegacyScoreSystem
 {
@@ -468,7 +466,7 @@ public sealed class ScoreAdapter : IAdapter<int>
 }
 ```
 
-#### Bridge
+- **Bridge:**
 ```csharp
 public interface IInputSystem : IBridgeImplementation
 {
@@ -491,7 +489,7 @@ public sealed class PlayerController : Bridge<IInputSystem>
 }
 ```
 
-#### Composite
+- **Composite:**
 ```csharp
 public sealed class UIElement : Composite<UIElement>
 {
@@ -504,7 +502,7 @@ panel.Add(new UIElement()); // Button
 panel.Add(new UIElement()); // Icon
 ```
 
-#### Decorator
+- **Decorator:**
 ```csharp
 public sealed class HealthDecorator : Decorator<int>
 {
@@ -515,7 +513,7 @@ public sealed class HealthDecorator : Decorator<int>
 int health = new HealthDecorator(100).Value;
 ```
 
-#### Facade
+- **Facade:**
 ```csharp
 public sealed class AudioSystem
 {
@@ -553,7 +551,7 @@ var game = new GameFacade();
 game.StartGame();
 ```
 
-#### Flyweight
+- **Flyweight:**
 ```csharp
 public sealed class Tile : IFlyweight<int>
 {
@@ -572,7 +570,7 @@ Tile tileA = factory.Get(1);
 Tile tileB = factory.Get(1); // Same instance
 ```
 
-#### Proxy
+- **Proxy:**
 ```csharp
 public sealed class TextureProxy : Proxy<Texture>
 {
@@ -596,10 +594,10 @@ Texture texture = new TextureProxy().Value;
 Design Patterns should be used to solve an existing problem, not to decorate code.
 
 Use a pattern when:
-* You observe duplication or rigid code
-* A behavior or creation logic changes frequently
-* You need to decouple systems or reduce dependencies
-* You want to express design intent clearly to other developers
+- You observe duplication or rigid code
+- A behavior or creation logic changes frequently
+- You need to decouple systems or reduce dependencies
+- You want to express design intent clearly to other developers
 
 Patterns are most valuable when they reduce complexity over time, not when they are introduced prematurely.
 
@@ -607,36 +605,36 @@ Patterns are most valuable when they reduce complexity over time, not when they 
 Patterns should be used only when they solve a real problem.
 
 Avoid using patterns when:
-* The problem is simple and unlikely to change
-* A pattern adds more abstraction than value
-* Readability suffers due to over-engineering
-* You are guessing future requirements instead of responding to real ones
+- The problem is simple and unlikely to change
+- A pattern adds more abstraction than value
+- Readability suffers due to over-engineering
+- You are guessing future requirements instead of responding to real ones
 
 Rule of thumb: If removing the pattern makes the code clearer, the pattern was probably unnecessary.
 
 ### Common Bad Usage / Anti-Patterns
 #### Overusing Singleton
-* Global access can hide dependencies
-* Makes testing harder
-* Encourages tight coupling
+- Global access can hide dependencies
+- Makes testing harder
+- Encourages tight coupling
 
 Prefer:
-* Dependency Injection
-* Explicit dependency passing
-* Use Singleton only for truly global and stateless systems.
+- Dependency Injection
+- Explicit dependency passing
+- Use Singleton only for truly global and stateless systems.
 
 #### Service Locator Abuse
 While Service Locator is included, it should be used with caution.
 
 Common problems:
-* Hidden dependencies
-* Difficult-to-track object lifetimes
-* Harder unit testing
+- Hidden dependencies
+- Difficult-to-track object lifetimes
+- Harder unit testing
 
 Service Locator is acceptable for:
-* Small projects
-* Transitional architectures
-* Tooling and infrastructure-level services
+- Small projects
+- Transitional architectures
+- Tooling and infrastructure-level services
 
 For larger projects, Dependency Injection is preferred.
 
@@ -644,34 +642,34 @@ For larger projects, Dependency Injection is preferred.
 Avoid chaining multiple patterns without a clear reason.
 
 Example:
-* Singleton + Factory + Service Locator for the same responsibility
+- Singleton + Factory + Service Locator for the same responsibility
 
 This often indicates:
-* Unclear ownership
-* Missing architectural decisions
+- Unclear ownership
+- Missing architectural decisions
 
 #### Dependency Injection vs Patterns
 Design Patterns and Dependency Injection are complementary, not competing concepts.
 
-* Patterns describe structure and behavior
-* Dependency Injection manages object lifetimes and dependencies
+- Patterns describe structure and behavior
+- Dependency Injection manages object lifetimes and dependencies
 
 In modern Unity projects:
-* Patterns define how systems interact
-* DI frameworks (e.g. Zenject, VContainer) define how systems are wired
+- Patterns define how systems interact
+- DI frameworks (e.g. Zenject, VContainer) define how systems are wired
 
 This package is DI-friendly by design:
-* Constructors are explicit
-* Interfaces are preferred
-* Static usage is minimized where possible
+- Constructors are explicit
+- Interfaces are preferred
+- Static usage is minimized where possible
 
 #### Final Note
 Design Patterns are tools, not goals. Understanding why a pattern exists is more important than memorizing its structure.
 
 This package aims to serve as:
-* A practical reference
-* A learning resource
-* A reminder of design intent
+- A practical reference
+- A learning resource
+- A reminder of design intent
 
 Use patterns consciously, refactor fearlessly, and keep systems simple.
 
@@ -681,7 +679,6 @@ The package includes:
 - **PlayMode tests** written only for `MonoSingleton` and `PersistentMonoSingleton`
 
 ## Acknowledgments
-Special thanks to [Refactoring Guru](https://refactoring.guru/design-patterns) and the Unity community for their
-invaluable resources and tools.
+Special thanks to [Refactoring Guru](https://refactoring.guru/design-patterns) and the Unity community for their invaluable resources and tools.
 
 For more information, visit the GitHub repository.
